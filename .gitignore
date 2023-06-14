@@ -1,3 +1,7 @@
 # Audio files
 *.mp3
 *.mp4
+
+# Album cover files
+*.jpg
+*.png
