@@ -4,9 +4,10 @@ import os
 import random
 import math
 
-# Remove clip if it's in the directory
+# Remove clips if they're in the directory
 try:
     os.remove("clip.mp3")
+    os.remove("temp.mp4")
 except:
     pass
 
@@ -30,3 +31,8 @@ ffmpeg.run(audio)
 # Add album cover to clip
 clip = ffmpeg.input("clip.mp3")
 cover = ffmpeg.input("cover.jpg")
+
+clip = ffmpeg.concat(cover, clip, v=1, a=1)
+clip = ffmpeg.output(clip, "temp.mp4")
+
+ffmpeg.run(clip)
