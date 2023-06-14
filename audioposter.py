@@ -34,5 +34,4 @@ cover = ffmpeg.input("cover.jpg")
 
 clip = ffmpeg.concat(cover, clip, v=1, a=1)
 clip = ffmpeg.output(clip, "temp.mp4")
-
 ffmpeg.run(clip)
