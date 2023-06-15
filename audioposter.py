@@ -1,4 +1,5 @@
 # Install needed dependencies
+import tweepy
 import ffmpeg
 import os
 import random

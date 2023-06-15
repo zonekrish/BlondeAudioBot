@@ -1,3 +1,6 @@
+# Credentials file
+secrets.py
+
 # Audio files
 *.mp3
 *.mp4
