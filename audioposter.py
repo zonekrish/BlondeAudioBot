@@ -30,7 +30,8 @@ except:
     pass
 
 # Get random song from audio file + its duration
-song = "audio/" + random.choice(os.listdir("audio"))
+rand = random.randint(0, len(os.listdir("audio"))-1)
+song = "audio/" + os.listdir("audio")[rand]
 songLength = math.floor(float(ffmpeg.probe(song)["format"]["duration"]))
 
 # Get random time for clip to start
@@ -56,5 +57,14 @@ ffmpeg.run(clip)
 
 # Post to Twitter
 vid = api.media_upload("temp.mp4")
-client.create_tweet(media_ids=[vid.media_id])
-os.remove("clip.mp3")
+tweet = api.update_status("", media_ids=[vid.media_id])
+
+reply = config["song_list"][rand]
+minutes = math.floor(time / 60)
+seconds = math.floor((time / 60 - minutes) * 60)
+
+time = str(minutes).zfill(2) + ":" + str(seconds).zfill(2)
+
+reply += ", " + time
+
+client.create_tweet(text=reply, in_reply_to_tweet_id=tweet.id)
