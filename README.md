@@ -31,10 +31,11 @@ Here's a quick rundown on how to create a Twitter bot
 1. Log into [the Twitter Developer site](https://developer.twitter.com)
 2. Create yourself [a project and an app](https://developer.twitter.com/en/portal/projects-and-apps)
 3. In your app, go to the "Keys and Tokens" section
-4. Please save the API key and secret, as well as the access token and secret with read and write permissions!
+4. Please save the API key and secret, the bearer token, and the access token and secret with read and write permissions!
 
 ### Set up
 Now that you have yourself a bot, refer to these steps:
 
 1. Clone this repository into any directory
-2. Create a folder named exactly: "audio"
+2. If there isn't one yet, create a folder named exactly: "audio" and put your audio files in there
+3. Add the photo you'd like to go with the audio file

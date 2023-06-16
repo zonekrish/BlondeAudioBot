@@ -4,7 +4,7 @@ import ffmpeg
 import os
 import random
 import math
-from mysecrets import credentials
+from mysecrets import credentials, config
 
 # Log into API + create client
 auth = tweepy.OAuth1UserHandler(
@@ -48,7 +48,7 @@ ffmpeg.run(audio)
 
 # Add album cover to clip
 clip = ffmpeg.input("clip.mp3")
-cover = ffmpeg.input("cover.jpg")
+cover = ffmpeg.input(config["cover_file"])
 
 clip = ffmpeg.concat(cover, clip, v=1, a=1)
 clip = ffmpeg.output(clip, "temp.mp4")
