@@ -10,5 +10,8 @@ mysecrets.py
 *.jpeg
 *.png
 
+# Testing file
+testing.py
+
 # pycache funsies
 __pycache__
