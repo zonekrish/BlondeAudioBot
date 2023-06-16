@@ -55,5 +55,6 @@ clip = ffmpeg.output(clip, "temp.mp4")
 ffmpeg.run(clip)
 
 # Post to Twitter
-vid = api.media_upload("temp.mov")
+vid = api.media_upload("temp.mp4")
 client.create_tweet(media_ids=[vid.media_id])
+os.remove("clip.mp3")
