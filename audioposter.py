@@ -4,7 +4,24 @@ import ffmpeg
 import os
 import random
 import math
+from mysecrets import credentials
 
+# Log into API + create client
+auth = tweepy.OAuth1UserHandler(
+    credentials["API_KEY"],
+    credentials["API_KEY_SECRET"],
+    credentials["ACCESS_TOKEN"],
+    credentials["ACCESS_TOKEN_SECRET"],
+)
+api = tweepy.API(auth)
+
+client = tweepy.Client(
+    credentials["BEARER_TOKEN"],
+    credentials["API_KEY"],
+    credentials["API_KEY_SECRET"],
+    credentials["ACCESS_TOKEN"],
+    credentials["ACCESS_TOKEN_SECRET"],
+)
 # Remove clips if they're in the directory
 try:
     os.remove("clip.mp3")
@@ -36,3 +53,7 @@ cover = ffmpeg.input("cover.jpg")
 clip = ffmpeg.concat(cover, clip, v=1, a=1)
 clip = ffmpeg.output(clip, "temp.mp4")
 ffmpeg.run(clip)
+
+# Post to Twitter
+vid = api.media_upload("temp.mov")
+client.create_tweet(media_ids=[vid.media_id])
