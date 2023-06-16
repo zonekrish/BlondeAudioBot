@@ -38,4 +38,16 @@ Now that you have yourself a bot, refer to these steps:
 
 1. Clone this repository into any directory
 2. If there isn't one yet, create a folder named exactly: "audio" and put your audio files in there
-3. Add the photo you'd like to go with the audio file
+3. Add the photo you'd like to go with the audio file into the main repository folder
+4. Add all the necessary information in `mysecrets.example.py` after renaming it to `mysecrets.py`
+5. Run the `audioposter.py` file manually or with a scheduling application
+
+### Syntax
+> python audioposter.py
+
+Type this line to manually run the file
+
+### Result
+If all goes well, you should get a bunch of output in the terminal following a video file in your repository. The video file should have a 3-second clip from one of your files in the audio folder alongside the image file you put into the repository.
+
+That video file should be posted on Twitter with your bot.
