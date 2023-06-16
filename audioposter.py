@@ -22,9 +22,14 @@ client = tweepy.Client(
     credentials["ACCESS_TOKEN"],
     credentials["ACCESS_TOKEN_SECRET"],
 )
+
 # Remove clips if they're in the directory
 try:
     os.remove("clip.mp3")
+except:
+    pass
+
+try:
     os.remove("temp.mp4")
 except:
     pass
@@ -42,6 +47,15 @@ while True:
     if not(time + 3 > songLength):
         break
 
+# Get song name + human time for reply
+reply = config["song_list"][rand]
+
+minutes = math.floor(time / 60)
+seconds = math.floor((time / 60 - minutes) * 60)
+time = str(minutes).zfill(2) + ":" + str(seconds).zfill(2)
+
+reply += ", " + time
+
 # Extract clip with ffmpeg
 audio = ffmpeg.input(song, ss=time, t=3)
 audio = ffmpeg.output(audio, "clip.mp3")
@@ -58,13 +72,8 @@ ffmpeg.run(clip)
 # Post to Twitter
 vid = api.media_upload("temp.mp4")
 tweet = api.update_status("", media_ids=[vid.media_id])
-
-reply = config["song_list"][rand]
-minutes = math.floor(time / 60)
-seconds = math.floor((time / 60 - minutes) * 60)
-
-time = str(minutes).zfill(2) + ":" + str(seconds).zfill(2)
-
-reply += ", " + time
-
 client.create_tweet(text=reply, in_reply_to_tweet_id=tweet.id)
+
+# Finally, remove files
+os.remove("clip.mp3")
+os.remove("temp.mp4")
