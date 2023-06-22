@@ -16,11 +16,11 @@ auth = tweepy.OAuth1UserHandler(
 api = tweepy.API(auth)
 
 client = tweepy.Client(
-    credentials["BEARER_TOKEN"],
-    credentials["API_KEY"],
-    credentials["API_KEY_SECRET"],
-    credentials["ACCESS_TOKEN"],
-    credentials["ACCESS_TOKEN_SECRET"],
+    credentials["twitter"]["BEARER_TOKEN"],
+    credentials["twitter"]["API_KEY"],
+    credentials["twitter"]["API_KEY_SECRET"],
+    credentials["twitter"]["ACCESS_TOKEN"],
+    credentials["twitter"]["ACCESS_TOKEN_SECRET"],
 )
 
 # Remove clips if they're in the directory
