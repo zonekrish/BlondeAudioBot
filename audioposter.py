@@ -8,10 +8,10 @@ from mysecrets import credentials, config
 
 # Log into API + create client
 auth = tweepy.OAuth1UserHandler(
-    credentials["API_KEY"],
-    credentials["API_KEY_SECRET"],
-    credentials["ACCESS_TOKEN"],
-    credentials["ACCESS_TOKEN_SECRET"],
+    credentials["twitter"]["API_KEY"],
+    credentials["twitter"]["API_KEY_SECRET"],
+    credentials["twitter"]["ACCESS_TOKEN"],
+    credentials["twitter"]["ACCESS_TOKEN_SECRET"],
 )
 api = tweepy.API(auth)
 
